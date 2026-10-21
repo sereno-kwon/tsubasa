@@ -19,12 +19,13 @@ jobs:
       - name: Download
         run: |
           set -e
+          UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"
           fail=0
           while read -r url dest; do
             [ -z "$url" ] && continue
             if [ -s "$dest" ]; then echo "skip  $dest"; continue; fi
             mkdir -p "$(dirname "$dest")"
-            if curl -fsSL --retry 3 -o "$dest" "$url"; then echo "ok    $dest"; else echo "FAIL  $url"; fail=1; fi
+            if curl -fsSL --retry 3 -A "$UA" -e "https://tsubasabicycles.co.kr/" -H "Accept: image/avif,image/webp,image/apng,image/*,*/*;q=0.8" -o "$dest" "$url"; then echo "ok    $dest $(stat -c%s "$dest") bytes"; else echo "FAIL  $url"; fail=1; fi
           done < .github/image-manifest.txt
           exit $fail
       - name: Commit
