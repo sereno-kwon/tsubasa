@@ -2,6 +2,14 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-46M3J6E2PG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-46M3J6E2PG');
+</script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>츠바사 바이시클 코리아 | Tsubasa Bicycles</title>
 <meta name="description" content="츠바사 바이시클의 바이크빌더, 에드비나스(Edvinas)는 브랜드의 시작과 끝 입니다. 영국 런던의 건축학도였던 그는 사이클링에 대한 순수한 열정을 하나의 경이로움으로 이끌어냅니다.">
@@ -545,6 +553,18 @@ footer .copy{margin-top:28px;font-size:12px}
     links.forEach(l => l.classList.toggle('on', l.getAttribute('href') === id));
   }), {rootMargin:'-45% 0px -50% 0px'});
   secs.forEach(s => spy.observe(s));
+
+  /* GA4: 섹션 도달 이벤트 (섹션별 1회) */
+  const seen = new Set();
+  const gaSpy = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting || seen.has(e.target.id) || typeof gtag !== 'function') return;
+    seen.add(e.target.id);
+    gtag('event', 'section_view', { section_name: e.target.id });
+  }), {threshold: 0.3});
+  secs.forEach(s => gaSpy.observe(s));
+  document.querySelectorAll('a[href*="rubiworkshop.com/consulting"]').forEach(a => a.addEventListener('click', () => {
+    if (typeof gtag === 'function') gtag('event', 'consulting_click', { link_location: a.classList.contains('cta-top') ? 'header' : 'crow_spec' });
+  }));
 
   /* Drag to scroll (PROCESS) */
   let down = false, sx = 0, sl = 0, moved = false;
