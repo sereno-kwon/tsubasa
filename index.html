@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>츠바사 바이시클 코리아 | Tsubasa Bicycles</title>
+<meta name="description" content="츠바사 바이시클의 바이크빌더, 에드비나스(Edvinas)는 브랜드의 시작과 끝 입니다. 영국 런던의 건축학도였던 그는 사이클링에 대한 순수한 열정을 하나의 경이로움으로 이끌어냅니다.">
+<meta name="keywords" content="츠바사,바이시클,코리아,Tsubasa,Bicycles,츠바사 크로우,Tsubasa Crow,카본 로드바이크,루비워크샵">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://tsubasabicycles.co.kr/">
+
+<!-- 기존 사이트 검색엔진 인증 유지 -->
+<meta name="google-site-verification" content="bdnkskkEq-zN5kcMbAjwWp0eT3YiEks_r4adS5pjv1I">
+<meta name="naver-site-verification" content="2c952eed495fa2a23158a69d1e9d698a6b77ae25">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tsubasabicycles.co.kr/">
+<meta property="og:title" content="츠바사 바이시클 코리아 | Tsubasa Bicycles">
+<meta property="og:description" content="카본 파이버가 지닌 순수함, 깃털처럼 가벼운 로드바이크, 건축과 사이클링의 조우.">
+<meta property="og:image" content="https://tsubasabicycles.co.kr/images/og.png">
+<link rel="icon" href="images/favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,700;1,400;1,700&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#000;
+  --surface:#0c0c0c;
+  --line:#363636;
+  --text:#c2c2c2;
+  --muted:#8a8a8a;
+  --strong:#fff;
+  --gutter:clamp(16px,5vw,80px);
+  --max:1280px;
+  --en:'Poppins',sans-serif;
+  --ko:'Poppins','Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font:400 15px/1.85 var(--ko);word-break:keep-all;overflow-x:hidden}
+img{display:block;width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+::selection{background:#fff;color:#000}
+
+/* ---------- Header ---------- */
+.hd{position:fixed;inset:0 0 auto;z-index:50;height:96px;display:flex;align-items:center;justify-content:center;transition:background .4s,height .4s}
+.hd.scrolled{background:rgba(0,0,0,.82);backdrop-filter:blur(8px);height:72px}
+.hd .logo{height:64px;transition:height .4s}
+.hd.scrolled .logo{height:44px}
+.hd .logo img{height:100%;width:auto}
+.burger{position:absolute;left:var(--gutter);top:50%;transform:translateY(-50%);width:28px;height:18px;background:none;border:0;cursor:pointer}
+.burger span{position:absolute;left:0;width:100%;height:1.5px;background:#fff;transition:.35s}
+.burger span:nth-child(1){top:0}.burger span:nth-child(2){top:8px}.burger span:nth-child(3){top:16px}
+body.menu-open .burger span:nth-child(1){top:8px;transform:rotate(45deg)}
+body.menu-open .burger span:nth-child(2){opacity:0}
+body.menu-open .burger span:nth-child(3){top:8px;transform:rotate(-45deg)}
+.hd .cta-top{position:absolute;right:var(--gutter);top:50%;transform:translateY(-50%);font:500 12px var(--en);letter-spacing:2px;color:#fff;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:2px}
+
+/* ---------- Overlay menu ---------- */
+.menu{position:fixed;inset:0;z-index:40;background:#000;display:flex;flex-direction:column;justify-content:center;padding:0 var(--gutter);opacity:0;visibility:hidden;transition:.5s}
+body.menu-open .menu{opacity:1;visibility:visible}
+.menu a{font:700 clamp(36px,7vw,84px)/1.15 var(--en);color:#3a3a3a;letter-spacing:-1px;transition:color .3s;width:max-content}
+.menu a:hover,.menu a.on{color:#fff}
+.menu a small{font:400 13px var(--en);letter-spacing:2px;vertical-align:top;margin-right:14px;color:var(--muted)}
+.menu .menu-foot{position:absolute;bottom:40px;left:var(--gutter);font:400 12px var(--en);letter-spacing:1px;color:var(--muted)}
+
+/* ---------- Dot nav ---------- */
+.dots{position:fixed;right:28px;top:50%;transform:translateY(-50%);z-index:45;display:flex;flex-direction:column;gap:14px}
+.dots a{position:relative;display:block;width:7px;height:7px;border-radius:50%;border:1px solid rgba(255,255,255,.6);transition:.3s}
+.dots a.on{background:#fff;border-color:#fff}
+.dots a::after{content:attr(data-label);position:absolute;right:18px;top:50%;transform:translateY(-50%);font:500 10px var(--en);letter-spacing:2px;color:#fff;opacity:0;transition:.3s;white-space:nowrap}
+.dots a:hover::after,.dots a.on::after{opacity:.85}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden}
+.slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transform:scale(1.06);transition:opacity 1.4s ease,transform 7s ease}
+.slide.on{opacity:1;transform:scale(1)}
+.slide::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.55),rgba(0,0,0,0) 60%)}
+.slide .cap{position:absolute;left:var(--gutter);bottom:22%;z-index:2;max-width:90%}
+.slide h2{font:700 clamp(38px,6.4vw,64px)/1.05 var(--en);color:#fff;letter-spacing:-.5px}
+.slide p{margin-top:10px;color:#ddd;font-size:15px}
+.slide .more{display:inline-block;margin-top:22px;font:400 13px var(--en);letter-spacing:1px;color:#fff;border-bottom:1px solid #fff}
+.slide .cap>*{opacity:0;transform:translateY(16px);transition:.9s .5s}
+.slide.on .cap>*{opacity:1;transform:none}
+.slide.on .cap p{transition-delay:.65s}.slide.on .cap .more{transition-delay:.8s}
+.hero-idx{position:absolute;left:var(--gutter);bottom:40px;z-index:3;display:flex;gap:10px;align-items:center;font:500 11px var(--en);letter-spacing:2px;color:#fff}
+.hero-idx button{width:36px;height:2px;border:0;background:rgba(255,255,255,.3);cursor:pointer;position:relative;overflow:hidden}
+.hero-idx button i{position:absolute;inset:0;background:#fff;transform:scaleX(0);transform-origin:left}
+.hero-idx button.on i{animation:prog 6s linear forwards}
+@keyframes prog{to{transform:scaleX(1)}}
+.scroll-cue{position:absolute;right:var(--gutter);bottom:40px;z-index:3;font:400 10px var(--en);letter-spacing:3px;color:#fff;writing-mode:vertical-rl}
+
+/* ---------- Section commons ---------- */
+section.sec{padding:clamp(96px,14vw,180px) var(--gutter) 0}
+.wrap{max-width:var(--max);margin:0 auto}
+.label{display:flex;align-items:center;gap:16px;font:500 12px var(--en);letter-spacing:3px;color:var(--muted);margin-bottom:28px}
+.label::after{content:"";flex:1;height:1px;background:var(--line)}
+.sec-title{font:700 clamp(40px,7vw,96px)/1 var(--en);color:#fff;letter-spacing:-1.5px;margin-bottom:clamp(40px,6vw,72px)}
+.lead{font-size:clamp(20px,2.4vw,30px);line-height:1.55;font-weight:700;color:#fff}
+.body{max-width:640px}
+.body p+p{margin-top:1.4em}
+.cols-2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);align-items:start}
+.full{margin-left:calc(var(--gutter)*-1);margin-right:calc(var(--gutter)*-1)}
+.gap-l{margin-top:clamp(64px,9vw,120px)}
+.gap-m{margin-top:clamp(40px,5vw,64px)}
+.tagline{text-align:center;padding:clamp(80px,10vw,140px) 0 0}
+.tagline small{display:block;font:500 12px var(--en);letter-spacing:4px;color:var(--muted);margin-bottom:18px}
+.tagline h3{font:400 clamp(18px,2.6vw,32px)/1.4 var(--en);color:#fff;letter-spacing:1px;max-width:900px;margin:0 auto}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- CROW ---------- */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3vw,48px)}
+.pillars h4{font:700 14px var(--en);letter-spacing:2px;color:#fff;padding-bottom:16px;margin-bottom:18px;border-bottom:1px solid var(--line)}
+blockquote{max-width:880px;margin:0 auto;text-align:center}
+blockquote p{font-size:clamp(17px,1.9vw,22px);line-height:1.8;color:#e6e6e6}
+blockquote cite{display:block;margin-top:22px;font-style:normal;font-weight:700;color:#fff;font-size:14px}
+.spec{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,80px);align-items:start}
+.spec h3{font:700 clamp(28px,3.6vw,44px)/1.1 var(--en);color:#fff}
+.spec h3 span{display:block;font-weight:300;color:var(--muted)}
+table{width:100%;border-collapse:collapse;border-top:1px solid #fff}
+th,td{padding:15px 0;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:14px}
+th{width:34%;font-weight:700;font-style:italic;color:#fff;padding-right:16px}
+td{color:var(--text)}
+td.price{color:#fff;font-weight:700}
+.btn{display:inline-flex;align-items:center;gap:12px;margin-top:36px;padding:16px 30px;border:1px solid #fff;color:#fff;font:500 13px var(--en);letter-spacing:2px;transition:.3s}
+.btn:hover{background:#fff;color:#000}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.features article{background:#000;padding:clamp(28px,3vw,44px)}
+.features small{font:500 11px var(--en);letter-spacing:3px;color:var(--muted)}
+.features h4{font-size:19px;color:#fff;margin:10px 0 16px;font-weight:700}
+.features p{font-size:14px}
+
+/* ---------- PROCESS ---------- */
+.strip{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 var(--gutter) 20px;cursor:grab;scrollbar-width:thin;scrollbar-color:#444 transparent}
+.strip.drag{cursor:grabbing;scroll-snap-type:none}
+.strip figure{flex:0 0 clamp(260px,30vw,420px);scroll-snap-align:start;position:relative}
+.strip figure img{aspect-ratio:4/5;object-fit:cover;pointer-events:none}
+.strip figcaption{position:absolute;left:12px;top:10px;font:500 11px var(--en);letter-spacing:2px;color:#fff;mix-blend-mode:difference}
+.strip-hint{display:flex;justify-content:space-between;font:500 11px var(--en);letter-spacing:2px;color:var(--muted);margin-bottom:16px}
+
+/* ---------- ARTWORK ---------- */
+.art{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.art figure{overflow:hidden;cursor:zoom-in}
+.art img{height:100%;object-fit:cover;transition:transform 1.2s ease}
+.art figure:hover img{transform:scale(1.04)}
+.art .a1{grid-column:span 4;grid-row:span 2}
+.art .a2,.art .a3{grid-column:span 2}
+.art .a4,.art .a5{grid-column:span 3}
+
+/* ---------- CONCEPT ---------- */
+.concept-grid{display:grid;grid-template-columns:7fr 5fr;gap:12px}
+.concept-grid .c-main{grid-row:span 2}
+.concept-grid img{height:100%;object-fit:cover}
+.concept-text{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px)}
+.concept-text h3{font:700 clamp(26px,3.4vw,42px)/1.15 var(--en);color:#fff;margin-bottom:20px}
+.concept-text .ko{font-size:clamp(17px,1.8vw,21px);color:#fff;line-height:1.7;font-weight:700}
+.en-spec{font:400 15px/1.9 var(--en);color:var(--text);border-left:1px solid var(--line);padding-left:clamp(20px,3vw,40px)}
+.en-spec b{color:#fff;font-weight:500}
+
+/* ---------- Footer ---------- */
+footer{margin-top:clamp(120px,14vw,200px);border-top:1px solid var(--line);padding:56px var(--gutter) 48px;font-size:13px;line-height:2;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap}
+footer h5{font:700 18px var(--en);color:#fff;margin-bottom:14px;letter-spacing:.5px}
+footer b{color:#c2c2c2;font-weight:700}
+footer .sns a{font:500 12px var(--en);letter-spacing:2px;color:#fff;border-bottom:1px solid #fff}
+footer .copy{margin-top:28px;font-size:12px}
+
+/* ---------- Lightbox ---------- */
+.lb{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.94);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:.35s}
+.lb.on{opacity:1;visibility:visible}
+.lb img{max-width:92vw;max-height:88vh;width:auto;object-fit:contain}
+.lb button{position:absolute;background:none;border:0;color:#fff;font:300 15px var(--en);letter-spacing:2px;cursor:pointer;padding:16px}
+.lb .x{top:16px;right:16px}.lb .pv{left:8px;top:50%}.lb .nx{right:8px;top:50%}
+.lb .ct{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);font:400 12px var(--en);letter-spacing:2px;color:var(--muted)}
+
+/* ---------- Responsive ---------- */
+@media (max-width:900px){
+  .cols-2,.spec,.concept-text{grid-template-columns:1fr}
+  .pillars,.features{grid-template-columns:1fr}
+  .art{grid-template-columns:repeat(2,1fr)}
+  .art .a1{grid-column:span 2;grid-row:auto}
+  .art .a2,.art .a3,.art .a4,.art .a5{grid-column:span 1}
+  .art .a5{grid-column:span 2}
+  .concept-grid{grid-template-columns:1fr 1fr}
+  .concept-grid .c-main{grid-column:span 2;grid-row:auto}
+  .dots{right:12px}
+  .dots a::after{display:none}
+  .hd .cta-top{display:none}
+  .en-spec{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:24px}
+}
+@media (max-width:560px){
+  .hd{height:72px}.hd .logo{height:48px}
+  .slide .cap{bottom:18%}
+  .scroll-cue{display:none}
+  th{width:38%}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header class="hd" id="hd">
+  <button class="burger" id="burger" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
+  <a href="#top" class="logo" aria-label="TSUBASA 홈"><img src="images/logo-white.png" alt="TSUBASA BICYCLES"></a>
+  <a href="https://rubiworkshop.com/consulting" class="cta-top" target="_blank" rel="noopener">CONSULTING</a>
+</header>
+
+<nav class="menu" id="menu" aria-label="섹션 메뉴">
+  <a href="#origin"><small>01</small>ORIGIN</a>
+  <a href="#crow"><small>02</small>CROW</a>
+  <a href="#process"><small>03</small>PROCESS</a>
+  <a href="#artwork"><small>04</small>ARTWORK</a>
+  <a href="#concept"><small>05</small>CONCEPT</a>
+  <div class="menu-foot">TSUBASA BICYCLES KOREA · RUBI COMPANY</div>
+</nav>
+
+<nav class="dots" id="dots" aria-label="페이지 위치">
+  <a href="#top" data-label="TSUBASA"></a>
+  <a href="#origin" data-label="ORIGIN"></a>
+  <a href="#crow" data-label="CROW"></a>
+  <a href="#process" data-label="PROCESS"></a>
+  <a href="#artwork" data-label="ARTWORK"></a>
+  <a href="#concept" data-label="CONCEPT"></a>
+</nav>
+
+<main>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="top" data-sec>
+  <div class="slide on" style="background-image:url(images/hero/01.jpg)">
+    <div class="cap"><h2>TSUBASA ORIGIN</h2><p>츠바사 바이시클의 세계</p><a class="more" href="#origin">MORE INFO &gt;</a></div>
+  </div>
+  <div class="slide" style="background-image:url(images/hero/02.jpg)">
+    <div class="cap"><h2>TSUBASA CROW</h2><p>츠바사 크로우, 깃털같은 가벼움</p><a class="more" href="#crow">MORE INFO &gt;</a></div>
+  </div>
+  <div class="slide" style="background-image:url(images/hero/03.jpg)">
+    <div class="cap"><h2>PROTOTYPE</h2><p>츠바사 타키온 MASS 프로토타입</p><a class="more" href="#concept">MORE INFO &gt;</a></div>
+  </div>
+  <div class="hero-idx" id="heroIdx"></div>
+  <div class="scroll-cue">SCROLL</div>
+</section>
+
+<!-- ===== 01 ORIGIN ===== -->
+<section class="sec" id="origin" data-sec>
+  <div class="wrap">
+    <div class="label reveal">01</div>
+    <h2 class="sec-title reveal">ORIGIN</h2>
+    <div class="cols-2">
+      <p class="lead reveal">카본 파이버가 지닌 순수함<br>깃털처럼 가벼운 로드바이크<br>건축과 사이클링의 조우</p>
+      <div class="body reveal">
+        <p>츠바사 바이시클의 바이크빌더, 에드비나스(Edvinas)는 브랜드의 시작과 끝 입니다. 영국 런던의 건축학도였던 그는 사이클링에 대한 순수한 열정을 하나의 경이로움으로 이끌어냅니다. 소재를 해석하는 탁월한 감각과 다양한 문화를 아우르는 그의 폭넓은 경험은 이동수단으로서의 자전거를 하나의 예술로 승화시킵니다.</p>
+      </div>
+    </div>
+  </div>
+  <figure class="full gap-l reveal"><img src="images/origin/01.jpg" alt="츠바사 오리진" loading="lazy"></figure>
+  <div class="wrap gap-l">
+    <div class="cols-2">
+      <figure class="reveal"><img src="images/origin/02.jpg" alt="" loading="lazy"></figure>
+      <figure class="reveal"><img src="images/origin/03.jpg" alt="" loading="lazy"></figure>
+    </div>
+    <div class="cols-2 gap-m">
+      <p class="reveal">한국계 일본인인 에드비나스의 아내의 이야기는 일제 강점기때로 거슬러 올라갑니다. 강제징용으로 일본으로 건너간 가족들과 그 속에서 태어난 그의 아내는 한국과 일본, 홍콩과 영국을 거쳐오며 다양한 문화를 흡수했습니다. 소비에트 연방 출신의 에드비나스는 유럽 동부의 리투아니아를 거쳐 영국까지 냉전국가의 상흔을 바라보며 성장했습니다.</p>
+      <p class="reveal">츠바사 바이시클이 가진 감성적 접근은 동양과 서양에 대한 폭넓은 이해에서 비롯됩니다. 츠바사 바이시클의 이름은 일본어의 어원인 ‘날개’(Tsubasa)에서 그 의미를 가져왔습니다. 츠바사는 깃털같은 가벼움을 추구하는 브랜드의 특성을 고스란히 표현하는 언어로, 과거와 현대, 동양과 서양, 기능성과 심미성의 영역에서 브랜드 고유의 에센스를 표현합니다.</p>
+    </div>
+    <div class="tagline reveal">
+      <small>TSUBASA BICYCLES</small>
+      <h3>INTRODUCING UNIQUE TSUBASA ATTITUDE,<br>HANDCRAFTED FROM THE MOST LIGHTNESS MATERIALS.</h3>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 02 CROW ===== -->
+<section class="sec" id="crow" data-sec>
+  <div class="wrap">
+    <div class="label reveal">02</div>
+    <h2 class="sec-title reveal">CROW</h2>
+  </div>
+  <figure class="full reveal"><img src="images/crow/01.jpg" alt="츠바사 크로우" loading="lazy"></figure>
+  <div class="wrap gap-l">
+    <p class="lead reveal" style="max-width:920px">츠바사 바이시클을 대표하는 모델, 츠바사 크로우(Tsubasa Crow)는 속도라는 하나의 명제만을 추구합니다.</p>
+    <div class="body gap-m reveal">
+      <p>츠바사 바이시클의 비스포크 바이크 빌더인 에드비나스(Edvinas)는 까마귀의 영민한 지능과 날렵한 실루엣 그리고 검은 깃털의 가벼움에서 영감을 받았습니다. 시판 모델에서는 만나볼 수 없는 섬세함은 츠바사 크로우의 에센스입니다.</p>
+    </div>
+
+    <div class="pillars gap-l">
+      <div class="reveal"><h4>AESTHETIC TEXTURE</h4><p>츠바사 크로우의 카본 튜브는 빌더의 손으로 직접 제작합니다. 각각의 튜브는 츠바사 크로우의 독특한 카본 패턴과 거친 입체감을 담고 있습니다. 각각의 카본 튜브는 라이더의 스타일과 지오메트리에 맞춰 하나의 프레임으로 재탄생합니다. 리어 브레이크의 브릿지와 리어 드레일러가 결합되는 드롭아웃은 티타늄을 사용합니다.</p></div>
+      <div class="reveal"><h4>TSUBASA ATTITUDE</h4><p>사막의 비단결같은 모래는 아름다움과 냉혹함 사이에서 자신의 존재감을 드러냅니다. 츠바사 크로우의 캐릭터는 사막의 모래가 갖고 있는 양면성을 사이클링에 그대로 투영합니다. 헬베티카 로고와 단정한 캐릭터라인 그리고 고유한 텍스쳐의 조합, 츠바사 크로우의 견고한 태도를 견고하게 표현합니다.</p></div>
+      <div class="reveal"><h4>CUSTOM OPTION</h4><p>튜빙의 설계와 지오메트리 그리고 페인팅까지, 루비워크샵과 함께 나만의 츠바사 크로우를 완성하세요. 루비워크샵에서 독점적으로 제공하는 프리미엄 파츠와 엔지니어바에서 제안하는 최상의 정비 및 조립 서비스를 통해, 완벽한 츠바사 크로우를 제작해보세요. 츠바사는 당신의 프리미엄 사이클링 라이프스타일을 완성합니다.</p></div>
+    </div>
+
+    <blockquote class="gap-l reveal">
+      <p>“단순한 브랜드 네이밍이 아닌, 빌더의 철학이 담긴 언어 츠바사(TSUBASA). ‘날개’라는 뜻을 지닌 단어는 자전거가 갖고 있는 정체성을 온전히 표현합니다. 깃털처럼 가벼운 무게와 놀라운 반응성이 만드는 안장 위의 고유한 감각, 그리고 츠바사 고유의 텍스쳐는 사이클링을 현대미술의 반열에 올려놓았습니다.”</p>
+      <cite>권오륜 디렉터</cite>
+    </blockquote>
+
+    <div class="cols-2 gap-l">
+      <figure class="reveal"><img src="images/crow/02.jpg" alt="" loading="lazy"></figure>
+      <figure class="reveal"><img src="images/crow/03.png" alt="" loading="lazy"></figure>
+    </div>
+    <div class="cols-2 gap-m">
+      <p class="reveal">카본 파이버의 시대로의 전환은 프레임 빌더들에게 놀라운 기회의 장을 선사했습니다. 철과 알루미늄이라는 고정된 물성을 벗어나 자신의 의지대로 강도와 부드러움 그리고 모양을 창조할 수 있는 카본파이버는 프레임 빌더의 상상력을 그대로 담아내는 캔버스가 되었습니다.</p>
+      <p class="reveal">츠바사 바이시클의 대표이자 프레임빌더인 에드비나스는 동양과 서양의 경계에 놓여있는 인물입니다. 소비에트 연방 출신으로서 영국 런던에서 이민자로의 삶을 살아온 그의 여정은 한국계 일본인 도예가인 아내를 만나며 인격의 마침표를 찍었습니다. 츠바사 크로우를 바라보면 제품의 문맥속에 동양과 서양의 경계미가 드러나는 이유입니다.</p>
+    </div>
+  </div>
+
+  <figure class="full gap-l reveal"><img src="images/crow/04.jpg" alt="츠바사 크로우 프레임" loading="lazy"></figure>
+
+  <div class="wrap gap-l">
+    <div class="spec">
+      <div class="reveal">
+        <h3>TSUBASA CROW<span>SPECIFICATION</span></h3>
+        <a class="btn" href="https://rubiworkshop.com/consulting" target="_blank" rel="noopener">모델 상담하기 →</a>
+      </div>
+      <table class="reveal">
+        <tr><th>프레임</th><td>츠바사 크로우</td></tr>
+        <tr><th>포크옵션</th><td>엔비 In-Route / 콜롬부스 푸투라 디스크 / 콜롬부스 트리티코</td></tr>
+        <tr><th>루팅옵션</th><td>풀 인터널 / 세미 인터널</td></tr>
+        <tr><th>BB 쉘</th><td>티타늄 T47</td></tr>
+        <tr><th>싯튜브</th><td>27.2mm / 31.6mm</td></tr>
+        <tr><th>드롭아웃</th><td>쓰루액슬 3D Printed 티타늄</td></tr>
+        <tr><th>튜브</th><td>츠바사 메이드 인하우스</td></tr>
+        <tr><th>OLD</th><td>프론트 12X100mm / 리어 12X142mm</td></tr>
+        <tr><th>헤드튜브</th><td>풀인터널 1-1/2” to 1-1/2”<br>세미인터널 1-1/8” to 1-1/2”</td></tr>
+        <tr><th>MAX 타이어 사이즈</th><td>28mm</td></tr>
+        <tr><th>무게</th><td>820-860g (56사이즈 기준)</td></tr>
+        <tr><th>한계체중</th><td>95kg</td></tr>
+        <tr><th>가격</th><td class="price">21,780,000원 부터</td></tr>
+        <tr><th>제작기간</th><td>주문 확정 시점으로부터 180일</td></tr>
+      </table>
+    </div>
+
+    <div class="features gap-l">
+      <article class="reveal"><small>TSUBASA</small><h4>림브레이크와 디스크브레이크</h4><p>츠바사 크로우는 림브레이크와 함께 디스크 브레이크 옵션도 함께 제공합니다. 독일 THM 카본 사의 경량 카본 컴포넌트, 퍼포먼스와 무게를 동시에 사로잡은 프리미엄 디스크 휠 브랜드인 파팅턴, 폭 넓은 라이딩 스펙트럼을 구현하는 엔비 컴포지트 등 루비워크샵에서는 츠바사 크로우를 선택하는 라이더를 위한 다양한 컴포넌트 브랜드를 직접 운용하고 있습니다.</p></article>
+      <article class="reveal"><small>TSUBASA</small><h4>날카로운 개성</h4><p>자이언트, 메리다, 스페셜라이즈드, 트랙 등 전 세계 시장에서 판매가 진행되는 카본 파이버 프레임의 대부분은 '양산'이라는 개념을 기초로 제작됩니다. 이와 달리 츠바사 바이시클의 로드바이크, 츠바사 크로우의 기본 태도는 '개인화' 입니다. 놀라운 강성과 깃털같은 가벼움 그리고 핸드메이드를 통해 선보이는 바이크의 기본적인 특성과 함께 츠바사 크로우만의 거친 표면 질감, 그리고 커스텀 페인팅 옵션은 라이더의 개성을 펼치기 위한 매력적인 캔버스 입니다.</p></article>
+      <article class="reveal"><small>TSUBASA</small><h4>깃털같이 가벼운 무게</h4><p>츠바사 바이시클의 초경량 로드바이크 츠바사 크로우를 정의하는 가장 중요한 키워드는 바로 무게입니다. 츠바사의 오너 에드비나스는 카본 로드바이크의 원재료인 프리프레그와 레진의 배합비율을 극적으로 조율해 1g의 재료조차 낭비없이 다루고 있습니다. 이는 카본 로드바이크의 디자인과 공정과정을 한 명의 빌더가 맡아서 진행하기에 가능한 디테일입니다.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 03 PROCESS ===== -->
+<section class="sec" id="process" data-sec>
+  <div class="wrap">
+    <div class="label reveal">03</div>
+    <h2 class="sec-title reveal">PROCESS</h2>
+    <div class="cols-2">
+      <p class="lead reveal">거친 입자감은<br>츠바사의 알파이자 오메가입니다.</p>
+      <div class="body reveal"><p>시판 자전거에서는 볼 수 없는 츠바사 바이시클의 카본 패턴은 사이클리스트의 마음을 사로잡습니다. 츠바사 바이시클의 디자이너인 에드비나스는 카본과 레진의 절묘한 배합을 통해 텍스처(Texture)의 표면을 완성합니다.</p></div>
+    </div>
+    <div class="strip-hint gap-l reveal"><span>HANDCRAFTED IN LONDON</span><span>DRAG →</span></div>
+  </div>
+  <div class="strip reveal" id="strip" data-gallery="process"></div>
+</section>
+
+<!-- ===== 04 ARTWORK ===== -->
+<section class="sec" id="artwork" data-sec>
+  <div class="wrap">
+    <div class="label reveal">04</div>
+    <h2 class="sec-title reveal">ARTWORK</h2>
+    <div class="cols-2">
+      <p class="lead reveal">동양과 서양의<br>경계에 놓인 빌더</p>
+      <div class="body reveal"><p>츠바사 바이시클의 대표이자 프레임빌더인 에드비나스는 동양과 서양의 경계에 놓여있는 인물입니다. 소비에트 연방 출신으로서 영국 런던에서 이민자로의 삶을 살아온 그의 여정은 한국계 일본인 도예가인 아내를 만나며 인격의 마침표를 찍었습니다.</p></div>
+    </div>
+    <div class="art gap-l" data-gallery="artwork">
+      <figure class="a1 reveal"><img src="images/artwork/01.jpg" alt="츠바사 아트워크" loading="lazy"></figure>
+      <figure class="a2 reveal"><img src="images/artwork/02.jpg" alt="" loading="lazy"></figure>
+      <figure class="a3 reveal"><img src="images/artwork/03.jpg" alt="" loading="lazy"></figure>
+      <figure class="a4 reveal"><img src="images/artwork/04.jpg" alt="" loading="lazy"></figure>
+      <figure class="a5 reveal"><img src="images/artwork/05.jpg" alt="" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 05 CONCEPT ===== -->
+<section class="sec" id="concept" data-sec>
+  <div class="wrap">
+    <div class="label reveal">05</div>
+    <h2 class="sec-title reveal">CONCEPT</h2>
+    <div class="concept-grid" data-gallery="concept">
+      <figure class="c-main reveal"><img src="images/concept/01.jpg" alt="츠바사 타키온 MASS" loading="lazy"></figure>
+      <figure class="reveal"><img src="images/concept/02.jpg" alt="" loading="lazy"></figure>
+      <figure class="reveal"><img src="images/concept/03.jpg" alt="" loading="lazy"></figure>
+    </div>
+    <div class="concept-text gap-l">
+      <div class="reveal">
+        <h3>Tsubasa Takhion MASS</h3>
+        <p class="ko">츠바사 타키온 MASS<br>직선의 스타일과 날카로움<br>츠바사의 브랜드 지향점을 표현하는<br>프로토타입 타임트라이얼 바이크</p>
+        <p style="margin-top:20px">츠바사 바이시클의 전위적인 애티튜드는 츠바사 타키온 MASS 프로토타입을 통해 시각적으로 구현되고 있습니다. 감각적인 직선의 조합은 자전거가 갖고 있는 순수성을 표현하며, 츠바사 바이시클이 가고자 하는 브랜드의 수평선을 제시합니다.</p>
+      </div>
+      <div class="en-spec reveal">
+        <p>Single Piece construction.<br>Internally bridged chain stays<br>and down tube for extra stiffness.</p>
+        <p style="margin-top:18px"><b>Material</b> &nbsp;Blend of carbon fibers.<br><b>Weight</b> &nbsp;900g (size 57)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <div class="wrap">
+    <div>
+      <h5>TSUBASA BICYCLES</h5>
+      <b>루비컴퍼니</b> (RUBI COMPANY) ㅣ <b>대표</b> : 권오현<br>
+      서울특별시 서초구 신반포로 320 루비빌딩<br>
+      <b>사업자등록번호</b> 685-05-00242 ㅣ <b>통신판매번호</b> 2016-서울서초-2062<br>
+      <b>고객센터</b> 1551-5320 (운영시간: 월-금 오전 9시-오후 6시)<br>
+      <b>이메일</b> <a href="mailto:help@tsubasabicycles.co.kr">help@tsubasabicycles.co.kr</a>
+    </div>
+    <div class="sns">
+      <a href="https://instagram.com/tsubasabicycles.kr" target="_blank" rel="noopener">INSTAGRAM</a>
+    </div>
+  </div>
+  <div class="wrap copy">Copyright ⓒ 2026 츠바사 바이시클 코리아 | Tsubasa Bicycles All rights reserved.</div>
+</footer>
+
+<!-- ===== Lightbox ===== -->
+<div class="lb" id="lb" role="dialog" aria-modal="true">
+  <img alt="">
+  <button class="x" aria-label="닫기">CLOSE</button>
+  <button class="pv" aria-label="이전">←</button>
+  <button class="nx" aria-label="다음">→</button>
+  <div class="ct"></div>
+</div>
+
+<script>
+(() => {
+  /* PROCESS 이미지: images/process 폴더의 01.jpg부터 순서대로, 추가 시 숫자만 변경 */
+  const PROCESS_COUNT = 13; // images/process/01.jpg ~ 13.jpg
+  const strip = document.getElementById('strip');
+  strip.innerHTML = Array.from({length:PROCESS_COUNT}, (_,i) => i).map(i =>
+    `<figure><img src="images/process/${String(i+1).padStart(2,'0')}.jpg" alt="츠바사 제작과정 ${i+1}" loading="lazy"><figcaption>${String(i+1).padStart(2,'0')}</figcaption></figure>`).join('');
+
+  /* Header & menu */
+  const hd = document.getElementById('hd'), body = document.body;
+  const onScroll = () => hd.classList.toggle('scrolled', scrollY > 40);
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  document.getElementById('burger').onclick = () => body.classList.toggle('menu-open');
+  document.querySelectorAll('#menu a').forEach(a => a.onclick = () => body.classList.remove('menu-open'));
+  addEventListener('keydown', e => { if (e.key === 'Escape') { body.classList.remove('menu-open'); closeLb(); } });
+
+  /* Hero slideshow */
+  const slides = [...document.querySelectorAll('.slide')], idx = document.getElementById('heroIdx');
+  let cur = 0, timer;
+  idx.innerHTML = slides.map((_,i) => `<button aria-label="슬라이드 ${i+1}"><i></i></button>`).join('');
+  const bars = [...idx.children];
+  const go = n => {
+    slides[cur].classList.remove('on'); bars[cur].classList.remove('on');
+    cur = (n + slides.length) % slides.length;
+    slides[cur].classList.add('on');
+    void bars[cur].offsetWidth; bars[cur].classList.add('on');
+    clearTimeout(timer); timer = setTimeout(() => go(cur + 1), 6000);
+  };
+  bars.forEach((b,i) => b.onclick = () => go(i));
+  go(0);
+
+  /* Reveal on scroll */
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  /* Active section → dots & menu */
+  const secs = [...document.querySelectorAll('[data-sec]')];
+  const dots = [...document.querySelectorAll('#dots a')], links = [...document.querySelectorAll('#menu a')];
+  const spy = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    const id = '#' + e.target.id;
+    dots.forEach(d => d.classList.toggle('on', d.getAttribute('href') === id));
+    links.forEach(l => l.classList.toggle('on', l.getAttribute('href') === id));
+  }), {rootMargin:'-45% 0px -50% 0px'});
+  secs.forEach(s => spy.observe(s));
+
+  /* Drag to scroll (PROCESS) */
+  let down = false, sx = 0, sl = 0, moved = false;
+  strip.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse') return; down = true; moved = false; sx = e.clientX; sl = strip.scrollLeft; strip.classList.add('drag'); });
+  addEventListener('pointermove', e => { if (!down) return; const dx = e.clientX - sx; if (Math.abs(dx) > 4) moved = true; strip.scrollLeft = sl - dx; });
+  addEventListener('pointerup', () => { down = false; strip.classList.remove('drag'); });
+
+  /* Lightbox */
+  const lb = document.getElementById('lb'), lbImg = lb.querySelector('img'), lbCt = lb.querySelector('.ct');
+  let set = [], li = 0;
+  const show = () => { lbImg.src = set[li]; lbCt.textContent = `${li+1} / ${set.length}`; };
+  function closeLb(){ lb.classList.remove('on'); }
+  document.querySelectorAll('[data-gallery]').forEach(g => g.addEventListener('click', e => {
+    const img = e.target.closest('figure')?.querySelector('img'); if (!img || moved) return;
+    set = [...g.querySelectorAll('img')].map(i => i.src); li = set.indexOf(img.src); show(); lb.classList.add('on');
+  }));
+  lb.querySelector('.x').onclick = closeLb;
+  lb.querySelector('.pv').onclick = e => { e.stopPropagation(); li = (li - 1 + set.length) % set.length; show(); };
+  lb.querySelector('.nx').onclick = e => { e.stopPropagation(); li = (li + 1) % set.length; show(); };
+  lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+  addEventListener('keydown', e => { if (!lb.classList.contains('on')) return; if (e.key === 'ArrowLeft') lb.querySelector('.pv').click(); if (e.key === 'ArrowRight') lb.querySelector('.nx').click(); });
+})();
+</script>
+</body>
+</html>
