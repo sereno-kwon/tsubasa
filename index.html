@@ -276,7 +276,7 @@ footer .copy{margin-top:28px;font-size:12px}
 <header class="hd" id="hd">
   <button class="burger" id="burger" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
   <a href="#top" class="logo" aria-label="TSUBASA 홈"><img src="images/logo-white.png" alt="TSUBASA BICYCLES"></a>
-  <a href="https://rubiworkshop.com/consulting" class="cta-top" target="_blank" rel="noopener">CONSULTING</a>
+  <a href="https://rubiworkshop.com/models" class="cta-top" target="_blank" rel="noopener">CONSULTING</a>
 </header>
 
 <nav class="menu" id="menu" aria-label="섹션 메뉴">
@@ -384,7 +384,7 @@ footer .copy{margin-top:28px;font-size:12px}
     <div class="spec">
       <div class="reveal">
         <h3>TSUBASA CROW<span>SPECIFICATION</span></h3>
-        <a class="btn" href="https://rubiworkshop.com/consulting" target="_blank" rel="noopener">모델 상담하기 →</a>
+        <a class="btn" href="https://rubiworkshop.com/models" target="_blank" rel="noopener">모델 상담하기 →</a>
       </div>
       <table class="reveal">
         <tr><th>프레임</th><td>츠바사 크로우</td></tr>
@@ -562,7 +562,7 @@ footer .copy{margin-top:28px;font-size:12px}
     gtag('event', 'section_view', { section_name: e.target.id });
   }), {threshold: 0.3});
   secs.forEach(s => gaSpy.observe(s));
-  document.querySelectorAll('a[href*="rubiworkshop.com/consulting"]').forEach(a => a.addEventListener('click', () => {
+  document.querySelectorAll('a[href*="rubiworkshop.com/models"]').forEach(a => a.addEventListener('click', () => {
     if (typeof gtag === 'function') gtag('event', 'consulting_click', { link_location: a.classList.contains('cta-top') ? 'header' : 'crow_spec' });
   }));
 
