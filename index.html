@@ -2,13 +2,20 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-46M3J6E2PG"></script>
+<!-- Google Analytics 4 (shared across Rubi Company brand sites)
+     Put the measurement ID in GA_ID. Empty = GA is not loaded. -->
 <script>
+  var GA_ID = 'G-46M3J6E2PG';
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-46M3J6E2PG');
+  if (/^G-[A-Z0-9]{4,}$/.test(GA_ID)) {
+    var gs = document.createElement('script');
+    gs.async = true;
+    gs.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(gs);
+    gtag('js', new Date());
+    gtag('config', GA_ID, { content_group: document.documentElement.lang || 'ko' });
+  }
 </script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>츠바사 바이시클 코리아 | Tsubasa Bicycles</title>
@@ -493,7 +500,7 @@ footer .copy{margin-top:28px;font-size:12px}
       <b>루비컴퍼니</b> (RUBI COMPANY) ㅣ <b>대표</b> : 권오현<br>
       서울특별시 서초구 신반포로 320 루비빌딩<br>
       <b>사업자등록번호</b> 685-05-00242 ㅣ <b>통신판매번호</b> 2016-서울서초-2062<br>
-      <b>고객센터</b> 1551-5320 (운영시간: 월-금 오전 9시-오후 6시)<br>
+      <b>고객센터</b> 1551-5320 (운영시간: 월~금 12:00~18:00)<br>
       <b>이메일</b> <a href="mailto:help@rubi.kr">help@rubi.kr</a>
     </div>
     <div class="sns">
@@ -554,18 +561,6 @@ footer .copy{margin-top:28px;font-size:12px}
   }), {rootMargin:'-45% 0px -50% 0px'});
   secs.forEach(s => spy.observe(s));
 
-  /* GA4: 섹션 도달 이벤트 (섹션별 1회) */
-  const seen = new Set();
-  const gaSpy = new IntersectionObserver(es => es.forEach(e => {
-    if (!e.isIntersecting || seen.has(e.target.id) || typeof gtag !== 'function') return;
-    seen.add(e.target.id);
-    gtag('event', 'section_view', { section_name: e.target.id });
-  }), {threshold: 0.3});
-  secs.forEach(s => gaSpy.observe(s));
-  document.querySelectorAll('a[href*="rubiworkshop.com/models"]').forEach(a => a.addEventListener('click', () => {
-    if (typeof gtag === 'function') gtag('event', 'consulting_click', { link_location: a.classList.contains('cta-top') ? 'header' : 'crow_spec' });
-  }));
-
   /* Drag to scroll (PROCESS) */
   let down = false, sx = 0, sl = 0, moved = false;
   strip.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse') return; down = true; moved = false; sx = e.clientX; sl = strip.scrollLeft; strip.classList.add('drag'); });
@@ -586,6 +581,46 @@ footer .copy{margin-top:28px;font-size:12px}
   lb.querySelector('.nx').onclick = e => { e.stopPropagation(); li = (li + 1) % set.length; show(); };
   lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
   addEventListener('keydown', e => { if (!lb.classList.contains('on')) return; if (e.key === 'ArrowLeft') lb.querySelector('.pv').click(); if (e.key === 'ArrowRight') lb.querySelector('.nx').click(); });
+})();
+</script>
+<script>
+/* GA4 events (shared across Rubi Company brand sites). Sends nothing while GA_ID is empty.
+   section_view, consulting_click, dealer_click, language_switch, social_click, image_view */
+(function(){
+  var lang = document.documentElement.lang || 'ko';
+  function track(name, params){ if (window.GA_ID && typeof gtag === 'function') gtag('event', name, params || {}); }
+  function where(a){
+    if (a.getAttribute('data-ga')) return a.getAttribute('data-ga');
+    if (a.closest('header')) return 'header';
+    if (a.closest('#menu, .menu')) return 'menu';
+    if (a.closest('footer')) return 'footer';
+    var s = a.closest('section[id], [data-sec][id]');
+    return s ? s.id : 'other';
+  }
+  if ('IntersectionObserver' in window) {
+    var seen = {};
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){
+      var id = e.target.id;
+      if (!e.isIntersecting || seen[id] || !window.GA_ID) return;
+      seen[id] = 1; track('section_view', { section_name: id });
+    }); }, { rootMargin: '-40% 0px -55% 0px' });
+    document.querySelectorAll('section[id], [data-sec][id]').forEach(function(s){ if (s.id !== 'top') io.observe(s); });
+  }
+  document.addEventListener('click', function(e){
+    var t = e.target, a = t.closest && t.closest('a');
+    if (a) {
+      var href = a.getAttribute('href') || '';
+      if (/rubiworkshop\.com\/models/.test(href)) return track('consulting_click', { link_location: where(a) });
+      if (/rubisupply\.com/.test(href)) return track('dealer_click', { link_location: where(a) });
+      var to = a.getAttribute('hreflang') || a.getAttribute('data-lang');
+      if (to && a.closest('.lang')) { if (to !== lang) track('language_switch', { from: lang, to: to }); return; }
+      var m = href.match(/instagram|kakao|youtube/);
+      if (m) track('social_click', { network: m[0], link_location: where(a) });
+      return;
+    }
+    var g = t.closest && t.closest('[data-gallery]');
+    if (g && t.closest('figure, .ph')) track('image_view', { gallery: g.getAttribute('data-gallery') || g.id || 'gallery' });
+  }, true);
 })();
 </script>
 </body>
