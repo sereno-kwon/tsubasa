@@ -18,6 +18,10 @@
 <meta name="keywords" content="츠바사,바이시클,코리아,Tsubasa,Bicycles,츠바사 크로우,Tsubasa Crow,카본 로드바이크,루비워크샵">
 <meta name="theme-color" content="#000000">
 <link rel="canonical" href="https://tsubasabicycles.co.kr/">
+<link rel="alternate" hreflang="ko" href="https://tsubasabicycles.co.kr/">
+<link rel="alternate" hreflang="en" href="https://tsubasabicycles.co.kr/en/">
+<link rel="alternate" hreflang="ja" href="https://tsubasabicycles.co.kr/ja/">
+<link rel="alternate" hreflang="x-default" href="https://tsubasabicycles.co.kr/">
 
 <!-- 기존 사이트 검색엔진 인증 유지 -->
 <meta name="google-site-verification" content="bdnkskkEq-zN5kcMbAjwWp0eT3YiEks_r4adS5pjv1I">
@@ -30,6 +34,8 @@
 <meta property="og:image" content="https://tsubasabicycles.co.kr/images/og.png">
 <meta property="og:site_name" content="츠바사 바이시클 코리아">
 <meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
 <meta property="og:image:width" content="1100">
 <meta property="og:image:height" content="734">
 <meta name="twitter:card" content="summary_large_image">
@@ -89,7 +95,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,700;1,400;1,700&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,700;1,400;1,700&family=Noto+Sans+KR:wght@300;400;700&display=swap">
 
 <style>
 :root{
@@ -107,6 +113,8 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{background:var(--bg);color:var(--text);font:400 15px/1.85 var(--ko);word-break:keep-all;overflow-x:hidden}
+html[lang="ja"] body{word-break:normal;line-break:strict;overflow-wrap:anywhere}
+html[lang="en"] body{word-break:normal;overflow-wrap:break-word}
 img{display:block;width:100%;height:auto}
 a{color:inherit;text-decoration:none}
 ::selection{background:#fff;color:#000}
@@ -124,7 +132,16 @@ a{color:inherit;text-decoration:none}
 body.menu-open .burger span:nth-child(1){top:8px;transform:rotate(45deg)}
 body.menu-open .burger span:nth-child(2){opacity:0}
 body.menu-open .burger span:nth-child(3){top:8px;transform:rotate(-45deg)}
-.hd .cta-top{position:absolute;right:var(--gutter);top:50%;transform:translateY(-50%);font:500 12px var(--en);letter-spacing:2px;color:#fff;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:2px}
+.hd-r{position:absolute;right:var(--gutter);top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:26px}
+.hd .cta-top{font:500 12px var(--en);letter-spacing:2px;color:#fff;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:2px}
+.lang{display:flex;gap:12px}
+.lang a{font:500 11px/1 var(--en);letter-spacing:.14em;color:var(--muted);padding:4px 0;transition:color .2s}
+.lang a:hover,.lang a.on{color:#fff}
+.menu .menu-lang{flex-direction:row;gap:22px;margin-top:48px;padding-top:24px;border-top:1px solid var(--line);max-width:520px}
+.menu .menu-lang a{font:500 13px/1 var(--ko);letter-spacing:0;color:var(--muted);width:auto}
+.menu .menu-lang a:hover,.menu .menu-lang a.on{color:#fff}
+footer .sns{display:flex;gap:22px;align-items:flex-start;flex-wrap:wrap}
+footer .ft-lang a{border:0;padding-bottom:4px}
 
 /* ---------- Overlay menu ---------- */
 .menu{position:fixed;inset:0;z-index:40;background:#000;display:flex;flex-direction:column;justify-content:center;padding:0 var(--gutter);opacity:0;visibility:hidden;transition:.5s}
@@ -262,6 +279,7 @@ footer .copy{margin-top:28px;font-size:12px}
 }
 @media (max-width:560px){
   .hd{height:72px}.hd .logo{height:48px}
+  .hd .lang{display:none}
   .slide .cap{bottom:18%}
   .scroll-cue{display:none}
   th{width:38%}
@@ -278,7 +296,14 @@ footer .copy{margin-top:28px;font-size:12px}
 <header class="hd" id="hd">
   <button class="burger" id="burger" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
   <a href="#top" class="logo" aria-label="TSUBASA 홈"><img src="images/logo-white.png" alt="TSUBASA BICYCLES"></a>
-  <a href="https://rubiworkshop.com/models" class="cta-top" target="_blank" rel="noopener">CONSULTING</a>
+  <div class="hd-r">
+    <nav class="lang" aria-label="Language">
+      <a data-lang="ko" hreflang="ko" lang="ko" href="./">KO</a>
+      <a data-lang="en" hreflang="en" lang="en" href="en/">EN</a>
+      <a data-lang="ja" hreflang="ja" lang="ja" href="ja/">JA</a>
+    </nav>
+    <a href="https://rubiworkshop.com/models" class="cta-top" target="_blank" rel="noopener">CONSULTING</a>
+  </div>
 </header>
 
 <nav class="menu" id="menu" aria-label="섹션 메뉴">
@@ -287,6 +312,11 @@ footer .copy{margin-top:28px;font-size:12px}
   <a href="#process"><small>03</small>PROCESS</a>
   <a href="#artwork"><small>04</small>ARTWORK</a>
   <a href="#concept"><small>05</small>CONCEPT</a>
+  <nav class="lang menu-lang" aria-label="Language">
+    <a data-lang="ko" hreflang="ko" lang="ko" href="./">한국어</a>
+    <a data-lang="en" hreflang="en" lang="en" href="en/">English</a>
+    <a data-lang="ja" hreflang="ja" lang="ja" href="ja/">日本語</a>
+  </nav>
   <div class="menu-foot">TSUBASA BICYCLES KOREA · RUBI COMPANY</div>
 </nav>
 
@@ -313,7 +343,7 @@ footer .copy{margin-top:28px;font-size:12px}
   <div class="slide" style="background-image:url(images/hero/03.jpg)">
     <div class="cap"><h2>PROTOTYPE</h2><p>츠바사 타키온 MASS 프로토타입</p><a class="more" href="#concept">MORE INFO &gt;</a></div>
   </div>
-  <div class="hero-idx" id="heroIdx"></div>
+  <div class="hero-idx" id="heroIdx" aria-label="슬라이드"></div>
   <div class="scroll-cue">SCROLL</div>
 </section>
 
@@ -499,6 +529,11 @@ footer .copy{margin-top:28px;font-size:12px}
       <b>이메일</b> <a href="mailto:help@rubi.kr">help@rubi.kr</a>
     </div>
     <div class="sns">
+      <nav class="lang ft-lang" aria-label="Language">
+        <a data-lang="ko" hreflang="ko" lang="ko" href="./">KO</a>
+        <a data-lang="en" hreflang="en" lang="en" href="en/">EN</a>
+        <a data-lang="ja" hreflang="ja" lang="ja" href="ja/">JA</a>
+      </nav>
       <a href="https://instagram.com/rubi.workshop" target="_blank" rel="noopener">INSTAGRAM</a>
     </div>
   </div>
@@ -523,13 +558,24 @@ footer .copy{margin-top:28px;font-size:12px}
   const onScroll = () => hd.classList.toggle('scrolled', scrollY > 40);
   addEventListener('scroll', onScroll, {passive:true}); onScroll();
   document.getElementById('burger').onclick = () => body.classList.toggle('menu-open');
-  document.querySelectorAll('#menu a').forEach(a => a.onclick = () => body.classList.remove('menu-open'));
+  document.querySelectorAll('#menu > a').forEach(a => a.onclick = () => body.classList.remove('menu-open'));
+
+  /* Language switch: mark current, keep the section you are on */
+  const pageLang = document.documentElement.lang || 'ko';
+  document.querySelectorAll('.lang a').forEach(a => {
+    if (a.dataset.lang === pageLang) { a.classList.add('on'); a.setAttribute('aria-current', 'true'); }
+    a.addEventListener('click', () => {
+      let t = ''; const line = innerHeight * 0.45;
+      ['origin','crow','process','artwork','concept'].forEach(id => { const el = document.getElementById(id); if (el && el.getBoundingClientRect().top <= line) t = id; });
+      a.href = a.href.split('#')[0] + (t ? '#' + t : '');
+    });
+  });
   addEventListener('keydown', e => { if (e.key === 'Escape') { body.classList.remove('menu-open'); closeLb(); } });
 
   /* Hero slideshow */
   const slides = [...document.querySelectorAll('.slide')], idx = document.getElementById('heroIdx');
   let cur = 0, timer;
-  idx.innerHTML = slides.map((_,i) => `<button aria-label="슬라이드 ${i+1}"><i></i></button>`).join('');
+  idx.innerHTML = slides.map((_,i) => `<button aria-label="${idx.getAttribute('aria-label')} ${i+1}"><i></i></button>`).join('');
   const bars = [...idx.children];
   const go = n => {
     slides[cur].classList.remove('on'); bars[cur].classList.remove('on');
@@ -547,7 +593,7 @@ footer .copy{margin-top:28px;font-size:12px}
 
   /* Active section → dots & menu */
   const secs = [...document.querySelectorAll('[data-sec]')];
-  const dots = [...document.querySelectorAll('#dots a')], links = [...document.querySelectorAll('#menu a')];
+  const dots = [...document.querySelectorAll('#dots a')], links = [...document.querySelectorAll('#menu > a')];
   const spy = new IntersectionObserver(es => es.forEach(e => {
     if (!e.isIntersecting) return;
     const id = '#' + e.target.id;

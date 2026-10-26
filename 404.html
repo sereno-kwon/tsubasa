@@ -6,11 +6,14 @@
 <meta name="robots" content="noindex">
 <script>
   // 기존 아임웹 하위 페이지 주소(/origin, /crow ...)를 원페이지 섹션으로 연결
+  // /en/..., /ja/... 로 들어온 주소는 같은 언어 페이지의 섹션으로 연결
   // github.io 미리보기(/tsubasa/)와 자체 도메인(/) 모두 동작
   var base = location.hostname.slice(-10) === 'github.io' ? '/tsubasa/' : '/';
-  var key = location.pathname.slice(base.length).replace(/\/$/, '').toLowerCase();
+  var parts = location.pathname.slice(base.length).toLowerCase().split('/').filter(Boolean);
+  var lang = (parts[0] === 'en' || parts[0] === 'ja') ? parts.shift() + '/' : '';
+  var key = parts[0] || '';
   var map = { origin:1, crow:1, process:1, artwork:1, concept:1 };
-  location.replace(base + (map[key] ? '#' + key : ''));
+  location.replace(base + lang + (map[key] ? '#' + key : ''));
 </script>
 <style>body{background:#000}</style>
 </head>

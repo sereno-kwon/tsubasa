@@ -2,10 +2,21 @@
 
 tsubasabicycles.co.kr 원페이지 정적 사이트 (GitHub Pages).
 
-- `index.html` 원페이지 본체 (ORIGIN · CROW · PROCESS · ARTWORK · CONCEPT)
-- `404.html` 기존 아임웹 하위 주소(/crow 등)를 섹션으로 연결
+- `index.html` 원페이지 본체, 한국어 원본 (ORIGIN · CROW · PROCESS · ARTWORK · CONCEPT)
+- `en/index.html`, `ja/index.html` 영어·일본어 페이지 (자동 생성, 직접 수정하지 않음)
+- `i18n/en.json`, `i18n/ja.json` 번역 사전 (한국어 문장 → 번역)
+- `tools/build_i18n.py` 번역 페이지 생성 스크립트 (bastioncycles.co.kr과 같은 방식)
+- `404.html` 기존 아임웹 하위 주소(/crow 등)와 /en/crow, /ja/process 같은 언어별 주소를 섹션으로 연결
 - `images/` 섹션별 이미지 (`hero`, `origin`, `crow`, `process`, `artwork`, `concept`)
 - `.github/image-manifest.txt` + `fetch-images.yml` 아임웹 CDN 이미지 이전용 워크플로
+
+## 다국어 (한국어 · English · 日本語)
+수정은 항상 한국어 `index.html`에서 합니다. 푸시하면 `build-i18n.yml`이 `en/`, `ja/` 페이지를 다시 만들어 커밋합니다.
+
+- 한국어 문장을 바꾸거나 새로 넣으면 `i18n/en.json`, `i18n/ja.json`의 `text`에 같은 한국어 문장을 키로 번역을 추가해야 합니다.
+- 번역이 빠진 문장이 있으면 Actions가 실패하고 빠진 문장을 로그에 보여줍니다. 그동안 영어·일본어 페이지는 이전 버전 그대로 유지됩니다.
+- 로컬 확인: `python3 tools/build_i18n.py --check`
+- 푸터 사업자 정보처럼 문단 단위로 통째로 바꿔야 하는 부분은 `blocks`에 HTML 그대로 넣습니다.
 
 ## 구글 애널리틱스 (GA4)
 루비컴퍼니 브랜드 사이트(츠바사·바스티온·팔리·크러스트) 공통 코드입니다.
